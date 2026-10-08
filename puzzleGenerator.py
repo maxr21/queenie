@@ -42,6 +42,7 @@ def queen_setter(board: Board):
                 return queen_setter(board)
                 
         queen_obj = {"row": random_cell.row, "col": random_cell.col, "region": queen}
+        random_cell.q = queen_obj
         queen_list.append(queen_obj)
         forbidden_set = _find_forbidden_cells(board, queen_obj)
         forbidden_cells.update(forbidden_set)
@@ -56,6 +57,7 @@ def surrounding_cells(board: Board, row: int, col: int):
         r = row + row_addifier
         c = col + col_addifier
         if 0 <= r < board.size and 0 <= c < board.size:
+            # print(f"({r}, {c}) - board cell: {board.cells[r][c]}")
             if board.cells[r][c].region == -1:
                 candidates.add(board.cells[r][c])
             
@@ -85,12 +87,12 @@ def region_creator(board: Board, queen_list: list):
         if not len(candidates_per_queen[q_iterator]) == 0:
             i += 1
             the_chosen_one = random.choice(tuple(candidates_per_queen[q_iterator]))
-            print(f'added cell {the_chosen_one} to queen {q_iterator}')
-            
+                        
             for candidates in candidates_per_queen:
                 candidates.discard(the_chosen_one)
                 
             the_chosen_one.region = q_iterator
+            # print(f'added cell {the_chosen_one} to queen {q_iterator}')
             candidates_per_queen[q_iterator].update(
                 surrounding_cells(board, the_chosen_one.row, the_chosen_one.col))
         q_iterator = (q_iterator + 1) % board.size
