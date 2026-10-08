@@ -18,12 +18,13 @@ class Board:
         self.size = size
         self.cells = []
         self.queens = [] # list of dict to queen position+region
+        self._build_board()
         
-    def build_board(self):
+    def _build_board(self):
         for row in range(self.size):
             self.cells.append([])
             for col in range(self.size):
-                self.cells[row].append(Cell(1, row, col))
+                self.cells[row].append(Cell(-1, row, col))
         
     def init_queens(self):
         '''Initialises the start state of the board by placing all queens along a diagonal'''
@@ -31,7 +32,7 @@ class Board:
             raise
         
         for i in range(self.size):
-            self.queens.append({"row": i, "col": i, "region": self.cells[i][i].region})
+            self.queens.append({"row": i, "col": i, "region": i})
     
     def make_swap(self, q1: int, q2: int):
         '''swap two queen's columns'''
