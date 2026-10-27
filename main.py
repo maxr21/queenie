@@ -1,6 +1,6 @@
 from renderer import BoardRenderer
 from puzzleGenerator import queen_setter, region_creator
-from solver import calculate_loss, solve
+from solver import solve
 from base import Board
 
 

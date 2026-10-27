@@ -1,7 +1,6 @@
 from base import Board, Cell, Queen
 import random
 
-
 def surrounding_diag(board: Board, row: int, col: int) -> set[Cell]:
     '''gets the four diagonals of a given row, int on a board'''
     candidates = set()
@@ -76,7 +75,6 @@ def filter_out_regioned(candidates: set) -> set[Cell]:
             real_candidates.add(candidate)
     return real_candidates
     
-
 def region_creator(board: Board, queen_list: list[Queen]) -> None:
     '''Given a board and a COMPLETE list of queens, 
     assigns each queen and cell on the board a region
@@ -110,9 +108,3 @@ def region_creator(board: Board, queen_list: list[Queen]) -> None:
                 candidates.discard(the_chosen_one)
             
         q_iterator = (q_iterator + 1) % board.size
-        
-    def generate_puzzle():
-        demo_board = Board(8)
-        demo_board.queens = queen_setter(demo_board)
-        region_creator(demo_board, demo_board.queens)
-        return 

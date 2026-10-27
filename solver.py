@@ -1,11 +1,11 @@
 from base import Board, Cell, Queen
-from puzzleGenerator import queen_setter, region_creator, surrounding_diag
+from puzzleGenerator import queen_setter, surrounding_diag
 import random
 
 from renderer import BoardRenderer
 BOARD_SIZE = 8
         
-def calculate_loss(board: Board, queen_list: list):
+def calculate_loss(board: Board, queen_list: list[Queen]):
     '''calculate the current loss'''
     occupied_regions = set()
     loss = 0
