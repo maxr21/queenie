@@ -64,7 +64,7 @@ class BoardRenderer:
         if self.show_queens:
             for queen in (board.queens if queens is None else queens):
                 self.queen_texts.append(self.ax.text(
-                    queen["col"] + 0.5, board.size - 1 - queen["row"] + 0.5, "♛",
+                    queen.col + 0.5, board.size - 1 - queen.row + 0.5, "♛",
                     ha="center", va="center", fontsize=24 * (8 / board.size), color="black"))
 
         if title is not None:

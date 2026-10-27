@@ -10,9 +10,9 @@ region_creator(demo_board, demo_board.queens)
 
 # Clear board so solution isn't posted
 demo_board.queens = []
-
-solution = solve(demo_board)
-# Now the board has 
 renderer = BoardRenderer(demo_board)
-renderer.update(demo_board, solution, "grah")
+solution = solve(demo_board, renderer)
+# Now the board has 
+
+renderer.update(demo_board, solution, "DONE!")
 renderer.show()
